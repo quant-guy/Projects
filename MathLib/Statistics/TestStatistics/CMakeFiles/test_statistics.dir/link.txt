@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/test_statistics.dir/Source/main.cpp.o CMakeFiles/test_statistics.dir/__/__/__/Utility/Utility/Source/Parser.cpp.o  -o test_statistics -rdynamic ../Statistics/libstatistics.so -Wl,-rpath,/home/daniel/Hypercomplete/Projects/Projects/MathLib/Statistics/Statistics 

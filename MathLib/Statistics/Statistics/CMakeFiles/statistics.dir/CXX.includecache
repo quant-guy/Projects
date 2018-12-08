@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Statistics/Statistics/Source/Statistics.cpp
+Statistics.h
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Statistics/Statistics/Source/Statistics.h
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Statistics/Statistics/Source/Statistics.h
+windows.h
+-
+cmath
+-
+algorithm
+-
+numeric
+-
+functional
+-
+iterator
+-
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Statistics/Statistics/Source/main.cpp
+windows.h
+-
+Statistics.h
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Statistics/Statistics/Source/Statistics.h
+
