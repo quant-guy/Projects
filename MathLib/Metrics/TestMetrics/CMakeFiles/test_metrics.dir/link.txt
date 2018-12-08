@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/test_metrics.dir/Source/main.cpp.o CMakeFiles/test_metrics.dir/__/__/__/Utility/Utility/Source/Parser.cpp.o  -o test_metrics -rdynamic ../Metrics/libmetrics.so -Wl,-rpath,/home/daniel/Hypercomplete/Projects/Projects/MathLib/Metrics/Metrics 

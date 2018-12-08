@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Metrics/Metrics/Source/Metrics.cpp
+Metrics.h
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Metrics/Metrics/Source/Metrics.h
+iostream
+-
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Metrics/Metrics/Source/Metrics.h
+string.h
+-
+vector
+-
+cmath
+-
+cstdlib
+-
+
