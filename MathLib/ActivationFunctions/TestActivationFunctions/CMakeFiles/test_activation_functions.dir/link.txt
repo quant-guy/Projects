@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/test_activation_functions.dir/Source/main.cpp.o  -o test_activation_functions -rdynamic 
