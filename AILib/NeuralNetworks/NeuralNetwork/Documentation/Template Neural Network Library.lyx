@@ -1,0 +1,302 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Template Neural Network Library
+\end_layout
+
+\begin_layout Author
+Daniel Kovach, KovachTechnologies LLC.
+\end_layout
+
+\begin_layout Date
+10/05/2011
+\end_layout
+
+\begin_layout Abstract
+The Template Neural Network Library (TNNL) is a C++ library that is designed
+ to implement advanced Artificial Neural Network (ANN) functionality in
+ any C++ project.
+ It is designed to be either statically compiled into a project directly,
+ or called dynamically at run time from a DLL.
+ There are no third party dependencies.
+ All functionality comes from within the libraries.
+ However, CMake builds the projects.
+\end_layout
+
+\begin_layout Part
+Theory
+\end_layout
+
+\begin_layout Standard
+Before we can adequately cover the functionality of the TNNL, we will first
+ discuss some principals of ANN's.
+ (TODO)
+\end_layout
+
+\begin_layout Part
+Implementation in the Template Neural Network Library
+\end_layout
+
+\begin_layout Standard
+The implementation of ANN's in this library begins with the 
+\emph on
+neural unit
+\emph default
+.
+ Many neural units can be linked together to form a 
+\emph on
+neural macro structure
+\emph default
+ (NMS), in which we commonly refer to each neural unit as a 
+\emph on
+node
+\emph default
+.
+\end_layout
+
+\begin_layout Section
+The Neural Unit
+\end_layout
+
+\begin_layout Standard
+The neural unit is a template class.
+ The template parameter of this class allows us to adjust the granularity
+ of the structure.
+ That is, we can use floating point or double values, or any other values
+ for which we happen to have the proper mathematical operators defined.
+ The private data members of the neural unit class include.
+\end_layout
+
+\begin_layout Standard
+1.
+ The learning rate
+\end_layout
+
+\begin_layout Standard
+2.
+ The parameter in the sigmoid function
+\end_layout
+
+\begin_layout Standard
+3.
+ A vector to contain the input
+\end_layout
+
+\begin_layout Standard
+4.
+ A vector to contain the output
+\end_layout
+
+\begin_layout Standard
+5.
+ A matrix containing the weights, whose dimensionality is 
+\begin_inset Formula $m\times n$
+\end_inset
+
+, where 
+\begin_inset Formula $m$
+\end_inset
+
+ is the length of the output vector and 
+\begin_inset Formula $n$
+\end_inset
+
+ is the length of the input vector
+\end_layout
+
+\begin_layout Standard
+6.
+ Four pointers to the previous nodes
+\end_layout
+
+\begin_layout Standard
+7.
+ Four pointers to the subsequent nodes
+\end_layout
+
+\begin_layout Standard
+8.
+ A matrix containing the backpropagated error delta
+\end_layout
+
+\begin_layout Subsection
+Details on the Private Data Members
+\end_layout
+
+\begin_layout Standard
+The first two data members are intuitive.
+ Storing the learning rate and sigmoid parameter internally allows for variabili
+ty if one wishes to play with different parameters in different nodes, and
+ facilitates forward and backpropagation.
+ Containing the input, output, matrix of values, and back propagated error
+ delta further aids the calculations.
+\end_layout
+
+\begin_layout Standard
+The pointers to the previous and subsequent nodes serve to link together
+ the connected graph that, when taken as a whole, will comprise the NMS.
+ Each node contains four pointers each way, because at the moment, there
+ is difficulty with dynamically allocating these pointers, and four seems
+ to be sufficient.
+\end_layout
+
+\begin_layout Subsection
+Member Functions
+\end_layout
+
+\begin_layout Standard
+The first member functions are of course the constructors.
+ There are three
+\end_layout
+
+\begin_layout Standard
+1.
+ A void constructor
+\end_layout
+
+\begin_layout Standard
+2.
+ A copy constructor (from another node)
+\end_layout
+
+\begin_layout Standard
+3.
+ A constructor given the dimensionality of the input and output vectors
+\end_layout
+
+\begin_layout Standard
+There is also a destructor, but since there are no internally dynamically
+ allocated structures, this simply calls all the destructors of the private
+ data members.
+\end_layout
+
+\begin_layout Standard
+There are also basic set, get functions for input, output, constant parameters
+ etc.
+\end_layout
+
+\begin_layout Standard
+There are two propagate and backpropagate functions.
+ The first propagate function takes an input vector.
+ This is assumed to be the first or only node in the NMS.
+ It implements the forward propagation algorithm and stores the result in
+ the output private data member.
+ Otherwise the propagate function is void and implements the forward propagation
+ algorithm on the sum of the output data members before it.
+ In a similar manner, the backpropagation algorithm can either take a parameter,
+ or is void.
+ It takes the desired output vector assuming it is the last or only node
+ in the NMS.
+ The backpropagation algorithm is implemented across all the weight matrices
+ in previous nodes.
+ Additionally the error delta is stored in the backpropagation error delta
+ vector in each node as this value proves very convenient in the calculaiton.
+\end_layout
+
+\begin_layout Section
+The Neural Macro Structure
+\end_layout
+
+\begin_layout Standard
+The NMS is a structure containing all the neural units that comprise it
+ within a vector.
+ This class serves to facilitate the application of neural algorithms such
+ as forward propagation and back propagation across all the nodes within
+ it.
+\end_layout
+
+\begin_layout Subsection
+Member Functions
+\end_layout
+
+\begin_layout Standard
+First, we will start with the constructors.
+ First we have the typical void and copy constructors, respectively.
+ Next, two constructors exist for constructing an NMS of a default type.
+ Although a wide range of NMS possibilities exists with the given node graph
+ structure, typically we only use ANN's with one or at most two hidden layers.
+ Typically, adding layers does not improve the algorithm by much.
+ Although it will converge in less training iterations, the computational
+ complexity increases.
+ The constructors for the one and two hidden layer NMS's take as arguments
+ the dimensions of the input, first hidden layer, second hidden layer (if
+ it exists), and output layer.
+ The destructor is a default destructor that simply calls the other destructors.
+\end_layout
+
+\begin_layout Standard
+The versatility of this system allows us to construct an NMS, piece by piece,
+ consisting of nodes of parameters of different values.
+ In most cases, we will not want to do this, and the Set functions in the
+ NMS are designed to set all its respective parameter in each node to the
+ same value, all at once.
+ Given a set of nodes with different parameters, they can, however be added
+ to the structure individually, preserving all their properties.
+\end_layout
+
+\begin_layout Standard
+The Backpropagation and forward propagation functions are designed to implement
+ these algorithms (internal to each node), across every node in the NMS.
+\end_layout
+
+\end_body
+\end_document
