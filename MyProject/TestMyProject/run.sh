@@ -29,12 +29,10 @@
 # DATE : 2015-12-30 10:19:06.739857
 # All rights reserved.
 ###################################################################################
-
-cmake_minimum_required( VERSION 2.6 )
-
-add_subdirectory( AILib )
-add_subdirectory( MathLib )
-add_subdirectory( Utility )
-add_subdirectory( MyProject )
-
-enable_testing()
+#!/bin/bash
+PROJECT_NAME=test_myproject
+./${PROJECT_NAME} --Constructor1
+./${PROJECT_NAME} --Constructor2
+./${PROJECT_NAME} --Constructor3
+./${PROJECT_NAME} --Sanity
+./${PROJECT_NAME} --Test1

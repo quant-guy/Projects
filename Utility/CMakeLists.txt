@@ -32,9 +32,7 @@
 
 cmake_minimum_required( VERSION 2.6 )
 
-add_subdirectory( AILib )
-add_subdirectory( MathLib )
+add_subdirectory( TestUtility )
 add_subdirectory( Utility )
-add_subdirectory( MyProject )
 
 enable_testing()

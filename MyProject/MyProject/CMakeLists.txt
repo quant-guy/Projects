@@ -32,9 +32,13 @@
 
 cmake_minimum_required( VERSION 2.6 )
 
-add_subdirectory( AILib )
-add_subdirectory( MathLib )
-add_subdirectory( Utility )
-add_subdirectory( MyProject )
+project( myproject )
+
+set( HEADERS Source/MyProject.hpp
+	Source/MyProjectCallers.h )
+
+set( SOURCE Source/main.cpp 
+	Source/MyProjectCallers.cpp )
+add_library( ${PROJECT_NAME} SHARED ${HEADERS} ${SOURCE} )
 
 enable_testing()

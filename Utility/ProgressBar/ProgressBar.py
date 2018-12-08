@@ -29,12 +29,61 @@
 # DATE : 2015-12-30 10:19:06.739857
 # All rights reserved.
 ###################################################################################
+#!/usr/bin/python
 
-cmake_minimum_required( VERSION 2.6 )
+#################################################################################
+# simple progress bar tool
+# - instantiate and use as in the example given in '__main__'
+# - must update mod max iterations of whatever the task length is
+#################################################################################
+import time
+import sys
 
-add_subdirectory( AILib )
-add_subdirectory( MathLib )
-add_subdirectory( Utility )
-add_subdirectory( MyProject )
+class ProgressBar :
+	progressbar_width = 40
+	counter = 0
+	mod_window = 0
 
-enable_testing()
+	def __init__( self, pbw ) :
+		self.progressbar_width = pbw
+		self.counter = 0
+		sys.stdout.write( "[%s]" % ( " " * self.progressbar_width ) )
+		sys.stdout.flush()
+		sys.stdout.write( "\b" * ( self.progressbar_width + 1 ) )
+
+	def task_length( self, tl ) :
+		try :
+			self.mod_window = tl / self.progressbar_width
+		except Exception as e :
+			pass
+
+	def update( self ) :
+		self.counter += 1
+		try :
+			if self.counter % self.mod_window == 0 :
+				sys.stdout.write( "-" )
+				sys.stdout.flush()
+		except Exception as e :
+			pass
+		
+	def finish( self ) :
+		sys.stdout.write( '\n' )
+
+if __name__ == '__main__' :
+	length = 50
+	pb = ProgressBar( length )
+	pb.task_length( length )
+	for i in xrange( pb.progressbar_width ) :
+		time.sleep( 0.1 )
+		pb.update()
+	pb.finish()
+
+	length2 = 50
+	mod_window = 500 * length
+	pb2 = ProgressBar( length )
+	pb2.task_length( mod_window )
+	for i in range( mod_window ) :
+		pb2.update()
+	pb2.finish()
+	
+	

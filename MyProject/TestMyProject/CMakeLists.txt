@@ -32,9 +32,29 @@
 
 cmake_minimum_required( VERSION 2.6 )
 
-add_subdirectory( AILib )
-add_subdirectory( MathLib )
-add_subdirectory( Utility )
-add_subdirectory( MyProject )
+project( test_myproject )
+
+include_directories( ${MYPROJECT}/MyProject/Source
+	${TIMING} 
+	${UTILITY}/Utility/Source )
+
+set( HEADERS Source/CommandLineOptions.h
+      ${MYPROJECT}/MyProject/Source/MyProject.hpp
+      ${MYPROJECT}/MyProject/Source/MyProjectCallers.h
+      ${TIMING}/Timing.h
+      ${UTILITY}/Utility/Source/CommandLineParser.hpp
+      ${UTILITY}/Utility/Source/Parser.h )
+
+set( SOURCE  Source/main.cpp
+	${UTILITY}/Utility/Source/Parser.cpp )
+
+add_executable( ${PROJECT_NAME} ${HEADERS} ${SOURCE} )
+
+target_link_libraries( ${PROJECT_NAME} myproject )
 
 enable_testing()
+add_test( test_Constructor1 ./${PROJECT_NAME} --Constructor1 )
+add_test( test_Constructor2 ./${PROJECT_NAME} --Constructor2 )
+add_test( test_Constructor3 ./${PROJECT_NAME} --Constructor3 )
+add_test( test_Sanity       ./${PROJECT_NAME} --Sanity       )
+add_test( test_Test1        ./${PROJECT_NAME} --Test1        )
