@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/test_cluster.dir/Source/main.cpp.o CMakeFiles/test_cluster.dir/__/__/__/Utility/Utility/Source/Iostream2.cpp.o CMakeFiles/test_cluster.dir/__/__/__/Utility/Utility/Source/Parser.cpp.o  -o test_cluster -rdynamic ../ClusterAlgorithms/libcluster_algorithms.so -Wl,-rpath,/home/daniel/Hypercomplete/Projects/Projects/AILib/Cluster/ClusterAlgorithms 
