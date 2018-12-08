@@ -1,5 +1,4 @@
 ###################################################################################
-# COPYRIGHT 2015 KovachTechnologies LLC
 # Redistribution and use in source and binary forms, with or without 
 # modification, are permitted provided that the following conditions are met:
 # 1. Redistributions of source code must retain the above copyright
@@ -14,7 +13,7 @@
 #    names of its contributors may be used to endorse or promote products
 #    derived from this software without specific prior written permission.
 # 
-# THIS SOFTWARE IS PROVIDED BY Kovach Technologies, LLC AS IS AND ANY
+# THIS SOFTWARE IS PROVIDED BY Kovach Technologies, LLC ''AS IS'' AND ANY
 # EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
 # DISCLAIMED. IN NO EVENT SHALL Kovach Technologies, LLC BE LIABLE FOR ANY
@@ -24,17 +23,75 @@
 # ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-# AUTHOR : Daniel Kovach
-# DATE : 2015-12-30 10:19:06.739857
-# All rights reserved.
+# 
+# AUTHOR: Daniel Kovach
+# DATE: 10/01/2010
+# COPYRIGHT 2014 Kovach Technologies, LLC
 ###################################################################################
 
 cmake_minimum_required( VERSION 2.6 )
 
-add_subdirectory( AILib )
-add_subdirectory( MathLib )
-add_subdirectory( Utility )
-add_subdirectory( MyProject )
+project( projects )
+
+if ( WIN32 )
+# pretty sure the PWD environment variable is the same in windows.
+# if not, just hard code it
+# set( CMAKE_HOME C:/Source_Code/Projects )
+set( CMAKE_HOME $ENV{PWD}/Projects               )
+set_property( DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS
+	_SCL_SECURE_NO_DEPRECATE
+	_CRT_SECURE_NO_DEPRECATE )
+endif ( WIN32 )
+
+if ( UNIX )
+set( CMAKE_HOME $ENV{PWD}/Projects               )
+endif ( UNIX )
+
+#############################################################################
+# Main directories
+#############################################################################
+set( AI_LIB                      ${CMAKE_HOME}/AILib                         )
+set( MATH_LIB                    ${CMAKE_HOME}/MathLib                       )
+set( UTILITY                     ${CMAKE_HOME}/Utility                       )
+set( MYPROJECT                   ${CMAKE_HOME}/MyProject                     )
+
+#############################################################################
+# AILib 
+#############################################################################
+set( CLUSTER                     ${AI_LIB}/Cluster                           )
+set( GENETICS                    ${AI_LIB}/Genetics                          )
+set( NEURAL_NETWORKS             ${AI_LIB}/NeuralNetworks                    )
+
+#############################################################################
+# AILib : Clusters
+#############################################################################
+set( CLUSTER_2_0                 ${CLUSTER}/Cluster_2_0                      )
+
+#############################################################################
+# AILib: Neural Networks 
+#############################################################################
+set( NEURAL_NETWORK              ${NEURAL_NETWORKS}/NeuralNetwork            )
+
+#############################################################################
+# AILib: Genetics 
+#############################################################################
+set( GENETICS_3_0                ${GENETICS}/Genetics_3_0                    )
+
+#############################################################################
+# MathLib
+#############################################################################
+set( ACTIVATION_FUNCTIONS        ${MATH_LIB}/ActivationFunctions             )
+set( FOURIER                     ${MATH_LIB}/Fourier                         )
+set( MATRIX                      ${MATH_LIB}/Matrix                          )
+set( METRICS                     ${MATH_LIB}/Metrics                         )
+set( RANDOM                      ${MATH_LIB}/Random                          )
+set( STATISTICS                  ${MATH_LIB}/Statistics                      )
+
+#############################################################################
+# Utility
+#############################################################################
+set( TIMING                      ${UTILITY}/Timing                           )
+ 
+add_subdirectory( ${CMAKE_HOME} )
 
 enable_testing()

@@ -54,7 +54,7 @@ test on that platform.
 I leverage C++ coding paradigms when possible.  The nature of the material
 seems to suggest an object approach, so I've taken advanatage of the tools
 C++ has provided e.g. inheritance, templates, etc.  I've tried to keep 
-everything self contained enough that you don't need to much around with 
+everything self contained enough that you don't need to muck around with 
 template classes and such if its not your thing.
 
 
