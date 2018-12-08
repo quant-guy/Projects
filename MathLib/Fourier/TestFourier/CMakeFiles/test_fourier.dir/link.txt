@@ -1,1 +1,0 @@
-/usr/bin/c++       CMakeFiles/test_fourier.dir/Source/main.cpp.o CMakeFiles/test_fourier.dir/__/__/__/Utility/Utility/Source/Parser.cpp.o  -o test_fourier -rdynamic ../Fourier/libfourier.so -Wl,-rpath,/home/daniel/Hypercomplete/Projects/Projects/MathLib/Fourier/Fourier 
