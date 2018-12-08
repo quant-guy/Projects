@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Random/Random/Source/Random.hpp
+assert.h
+-
+cmath
+-
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Random/Random/Source/RandomCallers.cpp
+RandomCallers.h
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Random/Random/Source/RandomCallers.h
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Random/Random/Source/RandomCallers.h
+windows.h
+-
+Random.hpp
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Random/Random/Source/Random.hpp
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Random/Random/Source/main.cpp
+RandomCallers.h
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Random/Random/Source/RandomCallers.h
+windows.h
+-
+
