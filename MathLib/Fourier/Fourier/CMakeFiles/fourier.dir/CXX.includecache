@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Fourier/Fourier/Source/Fourier.cpp
+Fourier.h
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Fourier/Fourier/Source/Fourier.h
+
+/home/daniel/Hypercomplete/Projects/Projects/MathLib/Fourier/Fourier/Source/Fourier.h
+cmath
+-
+iostream
+-
+stdlib.h
+-
+fstream
+-
+string.h
+-
+
