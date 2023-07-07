@@ -45,8 +45,10 @@ template classes and such if its not your thing.
 
 # Building
 
+```
 > cmake .
 > make
+```
 
 # Contents
 
@@ -75,5 +77,3 @@ Contains the following:
 - Metrics - math functions for various metrics
 - Random - random number generation
 - Statistics - statistical functions
-
-
